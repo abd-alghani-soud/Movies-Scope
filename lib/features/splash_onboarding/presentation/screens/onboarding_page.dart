@@ -53,7 +53,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 padding: EdgeInsets.all(8.sp),
                 child:
                     Align(
-                      alignment: Alignment.topLeft,
+                      alignment: Alignment.topCenter,
                       child: Image.asset(
                         page['image']!,
                         width: MediaQuery.of(context).size.width,

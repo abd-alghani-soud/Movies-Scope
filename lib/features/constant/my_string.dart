@@ -13,4 +13,7 @@ class MyString {
   static String subTitle3 =
       'Experience your favorite movies without interruptions. With Movie Scope.';
 
+  //api
+  static String baseUrl = 'https://api.themoviedb.org/3';
+  static String apiKey = 'edac796678edf5c515b5cd21edee2aaa';
 }
