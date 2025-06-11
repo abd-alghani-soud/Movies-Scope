@@ -4,7 +4,7 @@ import 'package:movies_scope/features/constant/my_colors.dart';
 import 'package:movies_scope/features/home/data/models/models_home.dart';
 
 class MovieCard extends StatelessWidget {
-  final Movie movie;
+  final MovieModel movie;
 
   const MovieCard({super.key, required this.movie});
 

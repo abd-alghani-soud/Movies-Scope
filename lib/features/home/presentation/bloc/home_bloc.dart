@@ -1,12 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:movies_scope/core/enum.dart';
 import 'package:movies_scope/features/home/data/models/models_home.dart';
 import 'package:movies_scope/features/home/data/repository/repo_home.dart';
 
 part 'home_event.dart';
-
 part 'home_state.dart';
 
+@lazySingleton
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final RepoHome repo;
 
@@ -14,12 +15,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>((event, emit) {});
     on<GetPlayingNowMovieEvent>((event, emit) async {
       emit(state.copyWith(status: Status.loading));
+      print('load load 21');
       final result = await repo.repoPlayNow();
       result.fold(
         (l) {
+          print('$l lllllllll');
           emit(state.copyWith(status: Status.failure));
         },
         (r) {
+          print('$r rrrrrrrrr');
           emit(state.copyWith(status: Status.success, movieModel: r));
         },
       );

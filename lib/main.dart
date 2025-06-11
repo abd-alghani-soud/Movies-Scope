@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_scope/core/di/di.dart';
 import 'package:movies_scope/features/splash_onboarding/presentation/screens/splash_page.dart';
 
-void main() {
+void main() async {
+  configureDependencies();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {

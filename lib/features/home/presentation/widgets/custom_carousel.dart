@@ -5,7 +5,7 @@ import 'package:movies_scope/features/constant/my_colors.dart';
 import 'package:movies_scope/features/home/data/models/models_home.dart';
 
 class CustomCarousel extends StatefulWidget {
-  final List<Movie> movies;
+  final List<MovieModel> movies;
 
   const CustomCarousel({required this.movies, super.key});
 
