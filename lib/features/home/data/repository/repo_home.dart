@@ -16,4 +16,12 @@ class RepoHome {
       return Left(e.toString());
     }
   }
+  Future<Either<String, List<MovieModel>>> repoPopular() async {
+    final result = await data.getMoviePopular();
+    try {
+      return Right(result);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
 }
