@@ -12,19 +12,35 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final RepoHome repo;
 
   HomeBloc(this.repo) : super(HomeState()) {
-    on<HomeEvent>((event, emit) {});
     on<GetPlayingNowMovieEvent>((event, emit) async {
-      emit(state.copyWith(status: Status.loading));
-      print('load load 21');
+      emit(state.copyWith(statusPlayingNow: Status.loading));
+      print('load load 1');
       final result = await repo.repoPlayNow();
       result.fold(
         (l) {
           print('$l lllllllll');
-          emit(state.copyWith(status: Status.failure));
+          emit(state.copyWith(statusPlayingNow: Status.failure));
         },
         (r) {
           print('$r rrrrrrrrr');
-          emit(state.copyWith(status: Status.success, movieModel: r));
+          emit(state.copyWith(
+              statusPlayingNow: Status.success, movieModelPlayingNow: r));
+        },
+      );
+    });
+    on<GetPopularMovieEvent>((event, emit) async {
+      emit(state.copyWith(statusPopular: Status.loading));
+      print('load load 2');
+      final result = await repo.repoPopular();
+      result.fold(
+            (l) {
+          print('$l lllllllll2');
+          emit(state.copyWith(statusPopular: Status.failure));
+        },
+            (r) {
+          print('$r rrrrrrrrr2');
+          emit(state.copyWith(
+              statusPopular: Status.success, movieModelPopular: r));
         },
       );
     });

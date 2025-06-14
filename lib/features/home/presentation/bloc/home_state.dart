@@ -1,18 +1,27 @@
 part of 'home_bloc.dart';
 
 class HomeState {
-  final Status status;
-  final List<MovieModel> movieModel;
+  final Status statusPlayingNow;
+  final List<MovieModel> movieModelPlayingNow;
+  final Status statusPopular;
+  final List<MovieModel> movieModelPopular;
 
-  HomeState({this.status = Status.loading, this.movieModel = const []});
+  HomeState({this.statusPlayingNow = Status
+      .loading, this.movieModelPlayingNow = const[
+  ], this.statusPopular = Status.loading, this.movieModelPopular = const[]});
 
   HomeState copyWith({
-    Status? status,
-    List<MovieModel>? movieModel,
+    Status? statusPlayingNow,
+    List<MovieModel>? movieModelPlayingNow,
+    Status? statusPopular,
+    List<MovieModel>? movieModelPopular,
   }) {
     return HomeState(
-      status: status ?? this.status,
-      movieModel: movieModel ?? this.movieModel,
+      statusPlayingNow: statusPlayingNow ?? this.statusPlayingNow,
+      movieModelPlayingNow: movieModelPlayingNow ?? this.movieModelPlayingNow,
+      statusPopular: statusPopular ?? this.statusPopular,
+      movieModelPopular: movieModelPopular ?? this.movieModelPopular,
     );
   }
+
 }
