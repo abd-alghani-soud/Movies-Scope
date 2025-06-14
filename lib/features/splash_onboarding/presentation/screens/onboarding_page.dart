@@ -90,14 +90,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ).animate().slideX(),
+                      SizedBox(height: 10.h,),
                       Text(
                         page['subtitle']!,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white70,
-                          fontSize: 15.sp,
+                          fontSize: 16.sp,
                         ),
                       ).animate().slideX(),
+                      SizedBox(height: 16.h,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -132,7 +134,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: MyColors.activeColor,
-                              fixedSize: Size(70.w, 70.h),
+                              fixedSize: Size(60.w, 60.h),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.r),
                               ),
@@ -145,6 +147,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           ),
                         ],
                       ),
+
                     ],
                   );
                 },

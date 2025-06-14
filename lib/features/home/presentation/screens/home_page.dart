@@ -6,6 +6,7 @@ import 'package:movies_scope/core/enum.dart';
 import 'package:movies_scope/features/constant/my_colors.dart';
 import 'package:movies_scope/features/home/presentation/bloc/home_bloc.dart';
 import 'package:movies_scope/features/home/presentation/widgets/custom_carousel.dart';
+import 'package:movies_scope/features/home/presentation/widgets/movie_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     getIt<HomeBloc>().add(GetPlayingNowMovieEvent());
+    getIt<HomeBloc>().add(GetPopularMovieEvent());
   }
   @override
   Widget build(BuildContext context) {
@@ -39,17 +41,17 @@ class _HomePageState extends State<HomePage> {
             BlocBuilder<HomeBloc, HomeState>(
               bloc: getIt<HomeBloc>(),
               builder: (context, state) {
-                if (state.status == Status.loading) {
+                if (state.statusPlayingNow == Status.loading) {
                   return SizedBox(
                     height: 200.h,
                     child: const Center(child: CircularProgressIndicator()),
                   );
-                } else if (state.status == Status.success) {
+                } else if (state.statusPlayingNow == Status.success) {
                   return SizedBox(
                     height: 220.h,
-                    child: CustomCarousel(movies: state.movieModel),
+                    child: CustomCarousel(movies: state.movieModelPlayingNow),
                   );
-                } else if (state.status == Status.failure) {
+                } else if (state.statusPlayingNow == Status.failure) {
                   return SizedBox(
                     height: 200.h,
                     child: Center(
@@ -95,6 +97,42 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 10.h),
                 ],
               ),
+            ),
+            SizedBox(height: 10.h),
+            BlocBuilder<HomeBloc, HomeState>(
+              bloc: getIt<HomeBloc>(),
+              builder: (context, state) {
+                if (state.statusPopular == Status.loading) {
+                  return SizedBox(
+                    height: 100.h,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                } else if (state.statusPopular == Status.failure) {
+                  return SizedBox(
+                    height: 100.h,
+                    child: const Center(child: Text('Failed')),
+                  );
+                } else if (state.statusPopular == Status.success) {
+                  return SizedBox(
+                    height: 276.h,
+                    child: ListView.builder(
+                      itemCount: state.movieModelPopular.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final movie = state.movieModelPopular[index];
+                        return Padding(
+                          padding: EdgeInsets.only(right: 12.w),
+                          child: MovieCard(movie: movie),
+                        );
+                      },
+                    ),
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              },
             ),
           ],
         ),

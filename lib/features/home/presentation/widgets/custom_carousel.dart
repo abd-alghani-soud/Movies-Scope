@@ -45,7 +45,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
                 children: [
                   Image.network(
                     backdropUrl,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     errorBuilder:
                         (context, __, ___) =>
                             const Center(child: Icon(Icons.broken_image)),
