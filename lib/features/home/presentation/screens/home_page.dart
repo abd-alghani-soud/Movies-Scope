@@ -5,7 +5,6 @@ import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/core/di/di.dart';
 import 'package:movies_scope/core/enum.dart';
 import 'package:movies_scope/features/home/presentation/bloc/home_bloc.dart';
-import 'package:movies_scope/features/home/presentation/screens/details_page.dart';
 import 'package:movies_scope/features/home/presentation/widgets/custom_carousel.dart';
 import 'package:movies_scope/features/home/presentation/widgets/movie_card.dart';
 
@@ -39,6 +38,30 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.symmetric(horizontal: 12.w),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Play Now',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      color: MyColors.activeColor,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 12.h,),
             BlocBuilder<HomeBloc, HomeState>(
               bloc: getIt<HomeBloc>(),
               builder: (context, state) {
