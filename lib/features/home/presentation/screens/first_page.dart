@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:movies_scope/features/constant/my_colors.dart';
+import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/features/home/presentation/screens/home_page.dart';
 
 class FirstPage extends StatefulWidget {

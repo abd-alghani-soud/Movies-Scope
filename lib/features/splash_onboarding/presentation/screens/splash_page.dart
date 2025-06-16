@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_scope/features/constant/my_colors.dart';
-import 'package:movies_scope/features/constant/my_string.dart';
+import 'package:movies_scope/constant/my_colors.dart';
+import 'package:movies_scope/constant/my_string.dart';
 import 'package:movies_scope/features/splash_onboarding/presentation/screens/onboarding_page.dart';
 
 class SplashPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_scope/features/constant/my_colors.dart';
+import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/features/home/data/models/models_home.dart';
 
 class CustomCarousel extends StatefulWidget {

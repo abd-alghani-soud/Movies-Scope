@@ -1,8 +1,7 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:movies_scope/features/constant/my_string.dart';
+import 'package:movies_scope/constant/my_string.dart';
 import 'package:movies_scope/features/home/data/models/models_home.dart';
 
 @injectable
@@ -26,6 +25,7 @@ class DataHome {
       throw Exception();
     }
   }
+
   Future<List<MovieModel>> getMoviePopular() async {
     final url = Uri(
       scheme: 'https',

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_scope/features/constant/my_colors.dart';
-import 'package:movies_scope/features/constant/my_images.dart';
-import 'package:movies_scope/features/constant/my_string.dart';
+import 'package:movies_scope/constant/my_colors.dart';
+import 'package:movies_scope/constant/my_images.dart';
+import 'package:movies_scope/constant/my_string.dart';
 import 'package:movies_scope/features/home/presentation/screens/first_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

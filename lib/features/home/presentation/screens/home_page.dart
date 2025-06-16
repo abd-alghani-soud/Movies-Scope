@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/core/di/di.dart';
 import 'package:movies_scope/core/enum.dart';
-import 'package:movies_scope/features/constant/my_colors.dart';
 import 'package:movies_scope/features/home/presentation/bloc/home_bloc.dart';
+import 'package:movies_scope/features/home/presentation/screens/details_page.dart';
 import 'package:movies_scope/features/home/presentation/widgets/custom_carousel.dart';
 import 'package:movies_scope/features/home/presentation/widgets/movie_card.dart';
 
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: MyColors.backgroundColor,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
         child: Column(
           children: [
             BlocBuilder<HomeBloc, HomeState>(

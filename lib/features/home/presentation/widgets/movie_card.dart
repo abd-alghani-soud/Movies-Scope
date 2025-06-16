@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_scope/features/constant/my_colors.dart';
+import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/features/home/data/models/models_home.dart';
+import 'package:movies_scope/features/home/presentation/screens/details_page.dart';
 
 class MovieCard extends StatelessWidget {
   final MovieModel movie;
@@ -11,7 +12,12 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DetailsPage(movie: movie)),
+        );
+      },
       child: Container(
         width: 150.w,
         margin: EdgeInsets.only(right: 16.w),
