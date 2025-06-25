@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/features/home/presentation/screens/home_page.dart';
+import 'package:movies_scope/features/search/presentation/screens/search_page.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -20,7 +21,8 @@ class _FirstPageState extends State<FirstPage> {
       builder: (context, value, _) {
         return Scaffold(
           backgroundColor: MyColors.backgroundColor,
-          body: IndexedStack(index: value, children: [HomePage()]),
+          body: IndexedStack(
+            index: value, children: [HomePage(), SearchPage(),],),
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: MyColors.backgroundColor,
             selectedItemColor: MyColors.activeColor,
