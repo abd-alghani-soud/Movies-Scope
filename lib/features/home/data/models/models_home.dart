@@ -1,18 +1,30 @@
-class MovieModel {
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'models_home.g.dart';
+
+@HiveType(typeId: 0)
+class MovieModel extends HiveObject {
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String title;
-  final String overview;
-  final String releaseDate;
-  final String posterPath;
-  final String backdropPath;
-  final double voteAverage;
-  final int voteCount;
-  final List<int> genreIds;
+  @HiveField(2)
   final bool adult;
-  final String originalLanguage;
-  final String originalTitle;
-  final bool video;
-  final double popularity;
+  @HiveField(3)
+  final String releaseDate;
+  @HiveField(4)
+  final String posterPath;
+  @HiveField(5)
+  final String overview;
+  final String? backdropPath;
+  final double? voteAverage;
+  final int? voteCount;
+  final List<int>? genreIds;
+
+  final String? originalLanguage;
+  final String? originalTitle;
+  final bool? video;
+  final double? popularity;
 
   MovieModel({
     required this.id,
@@ -20,15 +32,15 @@ class MovieModel {
     required this.overview,
     required this.releaseDate,
     required this.posterPath,
-    required this.backdropPath,
-    required this.voteAverage,
-    required this.voteCount,
-    required this.genreIds,
+    this.backdropPath,
+    this.voteAverage,
+    this.voteCount,
+    this.genreIds,
     required this.adult,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.video,
-    required this.popularity,
+    this.originalLanguage,
+    this.originalTitle,
+    this.video,
+    this.popularity,
   });
 
   Map<String, dynamic> toMap() {
@@ -68,5 +80,4 @@ class MovieModel {
       popularity: (map['popularity'] as num?)?.toDouble() ?? 0.0,
     );
   }
-
 }
