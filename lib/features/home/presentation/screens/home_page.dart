@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
     getIt<HomeBloc>().add(GetPlayingNowMovieEvent());
     getIt<HomeBloc>().add(GetPopularMovieEvent());
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: MyColors.backgroundColor,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.w),
+        padding: EdgeInsets.symmetric(horizontal: 14.w,),
         child: Column(
           children: [
             Row(
@@ -91,7 +92,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 30.h),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

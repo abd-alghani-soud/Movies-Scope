@@ -1,8 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_scope/constant/my_colors.dart';
+import 'package:movies_scope/core/di/di.dart';
+import 'package:movies_scope/features/favorite/presentation/bloc/favorite_bloc.dart';
 import 'package:movies_scope/features/home/data/models/models_home.dart';
 import 'package:movies_scope/features/home/presentation/widgets/info_icon.dart';
 
@@ -32,10 +35,12 @@ class DetailsPage extends StatelessWidget {
               ),
             ),
           ),
+
           SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(height: 100.h),
+                // Poster
                 Center(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -90,7 +95,7 @@ class DetailsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Story Line',
@@ -99,7 +104,6 @@ class DetailsPage extends StatelessWidget {
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
-                          textAlign: TextAlign.left,
                         ),
                         SizedBox(height: 16.h),
                         Text(
@@ -130,18 +134,38 @@ class DetailsPage extends StatelessWidget {
               ),
             ),
           ),
+
           Positioned(
             top: 38.h,
             right: 16.w,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
-                shape: BoxShape.circle,
-              ),
-              child: IconButton(
-                icon: Icon(Icons.favorite_border, color: Colors.red),
-                onPressed: () {},
-              ),
+            child: BlocBuilder<FavoriteBloc, FavoriteState>(
+              bloc: getIt<FavoriteBloc>(),
+              builder: (context, state) {
+                final isFav = state.wishlistMovies.any((m) => m.id == movie.id);
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.4),
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: Icon(
+                      isFav ? Icons.favorite : Icons.favorite_border,
+                      color: Colors.redAccent,
+                    ),
+                    onPressed: () {
+                      if (isFav) {
+                        getIt<FavoriteBloc>().add(
+                          RemoveToFavoriteEvent(id: movie.id),
+                        );
+                      } else {
+                        getIt<FavoriteBloc>().add(
+                          AddToFavoriteEvent(movie: movie),
+                        );
+                      }
+                    },
+                  ),
+                );
+              },
             ),
           ),
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_scope/constant/my_colors.dart';
+import 'package:movies_scope/features/favorite/presentation/screens/favorite_page.dart';
 import 'package:movies_scope/features/home/presentation/screens/home_page.dart';
 import 'package:movies_scope/features/search/presentation/screens/search_page.dart';
 
@@ -22,7 +23,9 @@ class _FirstPageState extends State<FirstPage> {
         return Scaffold(
           backgroundColor: MyColors.backgroundColor,
           body: IndexedStack(
-            index: value, children: [HomePage(), SearchPage(),],),
+            index: value,
+            children: [HomePage(), SearchPage(), FavoritePage()],
+          ),
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: MyColors.backgroundColor,
             selectedItemColor: MyColors.activeColor,
