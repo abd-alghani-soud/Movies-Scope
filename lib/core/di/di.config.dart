@@ -11,6 +11,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/favorite/presentation/bloc/favorite_bloc.dart' as _i1020;
 import '../../features/home/data/data_source/data_home.dart' as _i777;
 import '../../features/home/data/repository/repo_home.dart' as _i1024;
 import '../../features/home/presentation/bloc/home_bloc.dart' as _i202;
@@ -32,6 +33,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i777.DataHome>(() => _i777.DataHome());
     gh.factory<_i294.SearchDataSource>(() => _i294.SearchDataSource());
+    gh.lazySingleton<_i1020.FavoriteBloc>(() => _i1020.FavoriteBloc());
     gh.factory<_i822.SearchRepo>(
         () => _i822.SearchRepo(searchDataSource: gh<_i294.SearchDataSource>()));
     gh.lazySingleton<_i552.SearchBloc>(
