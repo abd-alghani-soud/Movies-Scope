@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/core/di/di.dart';
 import 'package:movies_scope/core/enum.dart';
@@ -69,7 +70,12 @@ class _SearchPageState extends State<SearchPage> {
             } else if (state.status == Status.failure) {
               return Center(child: Text('failed to fetch data'));
             } else if (state.status == Status.loading) {
-              return Center(child: CircularProgressIndicator());
+              return Center(
+            child: SpinKitFadingCircle(
+            color: Theme.of(context).colorScheme.secondary, // أو Colors.amber
+            size: 80.0,
+            ),
+            );
             } else {
               return SizedBox();
             }

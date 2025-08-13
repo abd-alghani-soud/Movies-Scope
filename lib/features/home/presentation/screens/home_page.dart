@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:movies_scope/constant/my_colors.dart';
 import 'package:movies_scope/core/di/di.dart';
 import 'package:movies_scope/core/enum.dart';
 import 'package:movies_scope/features/home/presentation/bloc/home_bloc.dart';
+import 'package:movies_scope/features/home/presentation/screens/all_movie_page.dart';
 import 'package:movies_scope/features/home/presentation/widgets/custom_carousel.dart';
 import 'package:movies_scope/features/home/presentation/widgets/movie_card.dart';
 
@@ -14,7 +16,6 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: MyColors.backgroundColor,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 14.w,),
+        padding: EdgeInsets.symmetric(horizontal: 14.w),
         child: Column(
           children: [
             Row(
@@ -51,7 +52,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AllMoviePage()),
+                    );
+                  },
                   child: Text(
                     'See All',
                     style: TextStyle(
@@ -62,14 +68,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(height: 12.h,),
+            SizedBox(height: 12.h),
             BlocBuilder<HomeBloc, HomeState>(
               bloc: getIt<HomeBloc>(),
               builder: (context, state) {
                 if (state.statusPlayingNow == Status.loading) {
                   return SizedBox(
                     height: 200.h,
-                    child: const Center(child: CircularProgressIndicator()),
+                    child: Center(
+                      child: SpinKitFadingCircle(
+                        color: MyColors.activeColor,
+                        size: 50.0,
+                      ),
+                    ),
                   );
                 } else if (state.statusPlayingNow == Status.success) {
                   return SizedBox(
@@ -108,7 +119,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllMoviePage(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'See All',
                           style: TextStyle(
@@ -130,8 +148,11 @@ class _HomePageState extends State<HomePage> {
                 if (state.statusPopular == Status.loading) {
                   return SizedBox(
                     height: 100.h,
-                    child: const Center(
-                      child: CircularProgressIndicator(),
+                    child: Center(
+                      child: SpinKitFadingCircle(
+                        color: MyColors.activeColor,
+                        size: 50.0,
+                      ),
                     ),
                   );
                 } else if (state.statusPopular == Status.failure) {
